@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class DetailActivity extends AppCompatActivity {
 
-    Button btn_play, btn_stop, btn_call, btn_send;
+    Button btn_play, btn_stop, btn_call;
     MediaPlayer player;
 
     @Override
@@ -22,7 +22,6 @@ public class DetailActivity extends AppCompatActivity {
         btn_play = findViewById(R.id.btn_play);
         btn_stop = findViewById(R.id.btn_stop);
         btn_call = findViewById(R.id.btn_call);
-        btn_send = findViewById(R.id.btn_send);
 
         btn_play.setOnClickListener(new View.OnClickListener() {
             @Override
