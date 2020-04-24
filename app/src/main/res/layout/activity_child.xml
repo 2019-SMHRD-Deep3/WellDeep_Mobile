@@ -51,27 +51,11 @@
         app:layout_constraintTop_toBottomOf="@+id/child_name" />
 
     <EditText
-        android:id="@+id/etchild_sex"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/et_default_drawable"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/child_sex" />
-
-    <EditText
         android:id="@+id/etchild_age"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/et_default_drawable"
         android:ems="10"
@@ -99,46 +83,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="44dp"
         android:text="성별"
         android:textColor="#050505"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etchild_name" />
+        app:layout_constraintTop_toBottomOf="@+id/etchild_age" />
 
     <TextView
         android:id="@+id/child_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="나이"
         android:textColor="#050505"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etchild_sex" />
+        app:layout_constraintTop_toBottomOf="@+id/etchild_name" />
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="248dp"
+        android:layout_height="185dp"
+        app:layout_constraintBottom_toTopOf="@+id/img_child"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etchild_age"
+        app:layout_constraintVertical_bias="0.283"
+        tools:ignore="MissingConstraints">
+
+
+        <RadioButton
+            android:id="@+id/radio_man"
+            android:layout_width="111dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="56dp"
+            android:text="남자" />
+
+        <RadioButton
+            android:id="@+id/radio_women"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="236dp"
+            android:layout_marginBottom="80dp"
+            android:checked="true"
+            android:text="여자" />
+
+    </RadioGroup>
 
     <TextView
         android:id="@+id/child_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="16dp"
         android:text="사진"
         android:textColor="#050505"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_child"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etchild_age" />
+        app:layout_constraintTop_toBottomOf="@+id/child_sex"
+        app:layout_constraintVertical_bias="0.707" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_child"
         android:layout_width="98dp"
         android:layout_height="90dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toTopOf="@+id/child_submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etchild_age"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toEndOf="@+id/child_photo"
         app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
     <Button
