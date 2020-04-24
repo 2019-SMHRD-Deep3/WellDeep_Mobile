@@ -75,10 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
-
-
     }
-
     class CustomTask extends AsyncTask<String, Void, String> {
         String sendMsg, receiveMsg;
         @Override
