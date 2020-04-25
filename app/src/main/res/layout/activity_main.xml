@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBEDE1"
+    android:background="#FBD157"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btn_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="91dp"
+        android:layout_height="39dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/button_draw"
         android:text="고객센터"
+        android:textColor="#53435b"
         app:layout_constraintBottom_toBottomOf="@+id/btn_modify"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -23,42 +24,47 @@
 
     <Button
         android:id="@+id/btn_modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="41dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/button_draw"
         android:text="회원정보수정"
+        android:textColor="#53435b"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_question"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_child"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <Button
         android:id="@+id/btn_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="녹음/영상"
+        android:layout_width="101dp"
+        android:layout_height="39dp"
+        android:background="@drawable/button_draw"
+        android:text="녹음/영상 확인"
+        android:textColor="#53435b"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_modify"
-        app:layout_constraintVertical_bias="0.431" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <Button
         android:id="@+id/btn_child"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_width="98dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="76dp"
+        android:background="@drawable/button_draw"
         android:text="아이등록하기"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_modify"
-        app:layout_constraintEnd_toStartOf="@+id/btn_modify"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textColor="#53435b"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_modify"
+        app:layout_constraintTop_toTopOf="@+id/btn_view"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -66,19 +72,25 @@
         android:layout_width="66dp"
         android:layout_height="28dp"
         android:text="TextView"
+        android:textColor="#53435B"
         app:layout_constraintBottom_toTopOf="@+id/btn_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_modify"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintVertical_bias="0.098" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="님 환영"
-        tools:layout_editor_absoluteX="286dp"
-        tools:layout_editor_absoluteY="188dp" />
+        android:layout_marginEnd="4dp"
+        android:text="님 환영합니다"
+        android:textColor="#1E1D1D"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_id"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
