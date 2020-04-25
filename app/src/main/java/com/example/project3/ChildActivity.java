@@ -1,10 +1,20 @@
 package com.example.project3;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,22 +23,23 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static android.os.Build.VERSION_CODES.O;
-
 public class ChildActivity extends AppCompatActivity {
     EditText et_id, etchild_name, etchild_age;
     ImageView img_child;
-    Button child_submit,child_cancel;
+    Button child_submit,child_cancel, btn_take;
     RadioGroup rg;
+    int PICK_IMAGE;
+    private final int GET_GALLERY_IMAGE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +48,7 @@ public class ChildActivity extends AppCompatActivity {
 
         child_submit = findViewById(R.id.child_submit);
         child_cancel = findViewById(R.id.child_cancel);
+        btn_take = findViewById(R.id.btn_take);
         rg = findViewById(R.id.rg);
 
         etchild_name = findViewById(R.id.etchild_name);
@@ -44,6 +56,15 @@ public class ChildActivity extends AppCompatActivity {
         etchild_age = findViewById(R.id.etchild_age);
         img_child = findViewById(R.id.img_child);
         et_id = findViewById(R.id.et_id);
+
+        btn_take.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent, GET_GALLERY_IMAGE);
+            }
+        });
 
         child_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +102,6 @@ public class ChildActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
     class CustomTask extends AsyncTask<String, Void, String> {
         String sendMsg, receiveMsg;
@@ -126,4 +146,14 @@ public class ChildActivity extends AppCompatActivity {
             return receiveMsg;
         }
     }
-}
+    @Override //갤러리에서 이미지 불러온 후 행동
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri selectedImageUri = data.getData();
+            img_child.setImageURI(selectedImageUri);
+
+        }
+
+    }}
