@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String id = intent.getExtras().getString("loginid");
-        tv_id.setText(id);
+        final String id_final = intent.getExtras().getString("loginid");
+        final String pw_final = intent.getExtras().getString("logindpw");
+        tv_id.setText(id_final);
 
         btn_view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
+                intent.putExtra("loginid",id_final);
+                intent.putExtra("loginpw",pw_final);
                 startActivity(intent);
             }
         });
