@@ -99,7 +99,7 @@ public class JoinActivity extends AppCompatActivity {
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.
                 OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
                 sendMsg = "id="+strings[0]+"&pw="+strings[1]+"&addr="+strings[2]+
-                        "&tel="+strings[3]+"&name="+strings[4]+"&sex="+strings[5];
+                        "&tel="+strings[3]+"&name="+strings[4]+"&sex="+strings[5]+"&type="+strings[6];
                 //보낼 정보인데요. GET방식으로 작성합니다. ex) "id=rain483&pwd=1234";
                 //회원가입처럼 보낼 데이터가 여러 개일 경우 &로 구분하여 작성합니다.
                 osw.write(sendMsg);//OutputStreamWriter에 담아 전송합니다.
