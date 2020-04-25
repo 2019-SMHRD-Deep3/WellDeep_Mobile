@@ -57,7 +57,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/et_default_drawable"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

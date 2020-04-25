@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button btn_question, btn_modify, btn_view, btn_child;
+    TextView tv_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,13 @@ public class MainActivity extends AppCompatActivity {
         btn_question = findViewById(R.id.btn_question);
         btn_modify = findViewById(R.id.btn_modify);
         btn_child = findViewById(R.id.btn_child);
+
+        tv_id = findViewById(R.id.tv_id);
+
+        Intent intent = getIntent();
+
+        String id = intent.getExtras().getString("loginid");
+        tv_id.setText(id);
 
         btn_view.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_join, btn_login;
     EditText user_id, user_pw;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(LoginActivity.this,"로그인", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("loginid",loginid);
+                        intent.putExtra("loginpw",loginpw);
                         startActivity(intent);
                         finish();}
 
