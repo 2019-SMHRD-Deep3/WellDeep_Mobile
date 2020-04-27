@@ -23,6 +23,9 @@ public class DetailActivity extends AppCompatActivity {
         btn_stop = findViewById(R.id.btn_stop);
         btn_call = findViewById(R.id.btn_call);
 
+        Intent intent = getIntent();
+        final String id_final = intent.getExtras().getString("loginid");
+
         btn_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -67,6 +67,7 @@ public class JoinActivity extends AppCompatActivity {
 
                 try {
                     String result = new CustomTask().execute(id,pw,addr,tel,name,sex,"join").get();
+                    Log.d("결과",result);
 
                     if (result.contains("0")) {
                         Toast.makeText(JoinActivity.this, "회원가입실패", Toast.LENGTH_SHORT).show();
@@ -74,7 +75,7 @@ public class JoinActivity extends AppCompatActivity {
                         Toast.makeText(JoinActivity.this,"회원가입실패", Toast.LENGTH_SHORT).show();
                     } else {
                     Toast.makeText(JoinActivity.this, "회원가입성공", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(JoinActivity.this, MainActivity.class);
+                    Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();}
 

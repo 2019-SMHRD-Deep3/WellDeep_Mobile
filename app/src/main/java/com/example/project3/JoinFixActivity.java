@@ -16,6 +16,9 @@ public class JoinFixActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_fix);
 
+        Intent intent = getIntent();
+        final String id_final = intent.getExtras().getString("loginid");
+
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_submit = findViewById(R.id.btn_submit);
 
@@ -23,6 +26,7 @@ public class JoinFixActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(JoinFixActivity.this, MainActivity.class);
+                intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
         });

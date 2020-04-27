@@ -35,13 +35,13 @@ public class QuestionActivity extends AppCompatActivity {
         btn_submit = findViewById(R.id.btn_submit);
 
         Intent intent = getIntent();
-
         final String id_final = intent.getExtras().getString("loginid");
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(QuestionActivity.this, MainActivity.class);
+                intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
         });

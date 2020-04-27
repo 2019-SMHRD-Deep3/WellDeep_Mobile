@@ -28,6 +28,9 @@ public class RecordingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
 
+        Intent intent = getIntent();
+        final String id_final = intent.getExtras().getString("loginid");
+
         items = new ArrayList<>();
         dto = new ArrayList<>();
         lv = findViewById(R.id.lv_page);

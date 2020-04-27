@@ -25,15 +25,14 @@ public class MainActivity extends AppCompatActivity {
         tv_id = findViewById(R.id.tv_id);
 
         Intent intent = getIntent();
-
         final String id_final = intent.getExtras().getString("loginid");
-        final String pw_final = intent.getExtras().getString("logindpw");
         tv_id.setText(id_final);
 
         btn_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RecordingActivity.class);
+                intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
         });
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
                 intent.putExtra("loginid",id_final);
-                intent.putExtra("loginpw",pw_final);
                 startActivity(intent);
             }
         });
@@ -51,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, JoinFixActivity.class);
+                intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
         });
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ChildActivity.class);
+                intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
         });

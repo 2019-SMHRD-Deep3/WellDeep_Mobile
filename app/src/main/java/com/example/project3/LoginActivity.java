@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 try {
                     String result  = new CustomTask().execute(loginid,loginpw,"login").get();
-                    Log.d("통신 결과", result);
+                    Log.d("결과", result);
 
                     if(result.equals("false")) {
                         Toast.makeText(LoginActivity.this,"로그인실패", Toast.LENGTH_SHORT).show();
