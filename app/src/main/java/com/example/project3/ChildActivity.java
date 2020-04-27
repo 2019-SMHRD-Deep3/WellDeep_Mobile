@@ -57,6 +57,9 @@ public class ChildActivity extends AppCompatActivity {
         img_child = findViewById(R.id.img_child);
         et_id = findViewById(R.id.et_id);
 
+        Intent intent = getIntent();
+        final String id_final = intent.getExtras().getString("loginid");
+
         btn_take.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +73,7 @@ public class ChildActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ChildActivity.this,MainActivity.class);
+                intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
         });
