@@ -49,6 +49,7 @@ public class RecordingActivity extends AppCompatActivity {
                 //position --> 클릭한 위치를 알려줌
                 //최상단에 있는 item을 클릭시 --> position의 번호는 ??? 0
                 Intent intent = new Intent(getApplicationContext(), dto.get(position).getPage());
+                intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
         });
