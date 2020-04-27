@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".DetailActivity" />
         <activity android:name=".ChildActivity" />
-        <activity android:name=".JoinFixActivity" />
+        <activity android:name=".JoinUpdateActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".QuestionActivity" />

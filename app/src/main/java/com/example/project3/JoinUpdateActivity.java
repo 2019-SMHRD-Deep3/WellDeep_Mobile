@@ -1,112 +1,97 @@
 package com.example.project3;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ChildActivity extends AppCompatActivity {
-    EditText et_id, etchild_name, etchild_age;
-    ImageView img_child;
-    Button child_submit,child_cancel, btn_take;
+public class JoinUpdateActivity extends AppCompatActivity {
+
+    Button btn_cancel,btn_submit;
+    EditText et_name, et_id, et_pw, et_addr, et_tel;
     RadioGroup rg;
-    int PICK_IMAGE;
-    private final int GET_GALLERY_IMAGE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_child);
-
-        child_submit = findViewById(R.id.child_submit);
-        child_cancel = findViewById(R.id.child_cancel);
-        btn_take = findViewById(R.id.btn_take);
-        rg = findViewById(R.id.rg);
-
-        etchild_name = findViewById(R.id.etchild_name);
-        final RadioButton rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
-        etchild_age = findViewById(R.id.etchild_age);
-        img_child = findViewById(R.id.img_child);
-        et_id = findViewById(R.id.et_id);
+        setContentView(R.layout.activity_join_fix);
 
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
 
-        btn_take.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                startActivityForResult(intent, GET_GALLERY_IMAGE);
-            }
-        });
 
-        child_cancel.setOnClickListener(new View.OnClickListener() {
+        btn_cancel = findViewById(R.id.btn_cancel);
+        btn_submit = findViewById(R.id.btn_submit);
+
+        rg = findViewById(R.id.rg);
+
+        et_id = findViewById(R.id.et_id);
+        et_id.setText(id_final);
+        et_id.setEnabled(false);
+        et_pw = findViewById(R.id.et_pw);
+        et_addr = findViewById(R.id.et_addr);
+        et_tel = findViewById(R.id.et_tel);
+        et_name = findViewById(R.id.et_name);
+        final RadioButton rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChildActivity.this,MainActivity.class);
+                Intent intent = new Intent(JoinUpdateActivity.this, MainActivity.class);
                 intent.putExtra("loginid",id_final);
+
+
                 startActivity(intent);
             }
         });
 
-        child_submit.setOnClickListener(new View.OnClickListener() {
+        btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String name = etchild_name.getText().toString();
-                String sex = rd.getText().toString();
-                String age = etchild_age.getText().toString();
-                String img = img_child.getDrawable().toString();
                 String id = et_id.getText().toString();
+                String pw = et_pw.getText().toString();
+                String addr = et_addr.getText().toString();
+                String tel = et_tel.getText().toString();
+                String name = et_name.getText().toString();
+                String sex = rd.getText().toString();
 
                 try {
-                    String result = new CustomTask().execute(name,sex,age,img,id,"child_join").get();
+                    String result = new CustomTask().execute(id,pw,addr,tel,name,sex,"join").get();
+                    Log.d("결과",result);
 
                     if (result.contains("0")) {
-                        Toast.makeText(ChildActivity.this, "아이등록실패", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JoinUpdateActivity.this, "회원수정실패", Toast.LENGTH_SHORT).show();
                     } else if(result == null) {
-                        Toast.makeText(ChildActivity.this,"아이등록실패", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JoinUpdateActivity.this,"회원수정실패", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(ChildActivity.this, "아이등록성공", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ChildActivity.this, MainActivity.class);
-                        intent.putExtra("loginid",id_final);
+                        Toast.makeText(JoinUpdateActivity.this, "회원수정성공", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(JoinUpdateActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();}
 
                 } catch (Exception e) {
-                    Toast.makeText(ChildActivity.this, "아이등록 실패했음", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JoinUpdateActivity.this, "회원수정 실패했음", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
     }
     class CustomTask extends AsyncTask<String, Void, String> {
         String sendMsg, receiveMsg;
@@ -120,8 +105,8 @@ public class ChildActivity extends AppCompatActivity {
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.
                 OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-                sendMsg = "name="+strings[0]+"&sex="+strings[1]+"&age="+strings[2]+
-                        "&img="+strings[3]+"&id="+strings[4]+"&type="+strings[5];
+                sendMsg = "id="+strings[0]+"&pw="+strings[1]+"&addr="+strings[2]+
+                        "&tel="+strings[3]+"&name="+strings[4]+"&sex="+strings[5]+"&type="+strings[6];
                 //보낼 정보인데요. GET방식으로 작성합니다. ex) "id=rain483&pwd=1234";
                 //회원가입처럼 보낼 데이터가 여러 개일 경우 &로 구분하여 작성합니다.
                 osw.write(sendMsg);//OutputStreamWriter에 담아 전송합니다.
@@ -151,14 +136,4 @@ public class ChildActivity extends AppCompatActivity {
             return receiveMsg;
         }
     }
-    @Override //갤러리에서 이미지 불러온 후 행동
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
-            Uri selectedImageUri = data.getData();
-            img_child.setImageURI(selectedImageUri);
-
-        }
-
-    }}
+}
