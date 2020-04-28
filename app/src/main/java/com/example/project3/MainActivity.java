@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btn_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RecordingActivity.class);
+                Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
                 intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }

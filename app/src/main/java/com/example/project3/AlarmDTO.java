@@ -1,10 +1,10 @@
 package com.example.project3;
 
-public class RecordingDTO {
+public class AlarmDTO {
     private String title;
     private Class<?> page;
 
-    public RecordingDTO(String title, Class<?> page) {
+    public AlarmDTO(String title, Class<?> page) {
         this.title = title;
         this.page = page;
     }

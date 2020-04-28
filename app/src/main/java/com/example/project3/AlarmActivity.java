@@ -1,50 +1,40 @@
 package com.example.project3;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class RecordingActivity extends AppCompatActivity {
+public class AlarmActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter<String> adapter;
     ArrayList<String> items;
-    ArrayList<RecordingDTO> dto;
+    ArrayList<AlarmDTO> dto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recording);
+        setContentView(R.layout.activity_alarm);
 
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
@@ -65,12 +55,12 @@ public class RecordingActivity extends AppCompatActivity {
 
             for(int i=0; i<jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
                 jsonObject = jsonArray.getJSONObject(i);
-                list.add(jsonObject.getString("r_time") +" "+ jsonObject.getString("p_id") +" ");
-                dto.add(new RecordingDTO(list.get(i), DetailActivity.class));
+                list.add(jsonObject.getString("a_time") +" "+ jsonObject.getString("a_number") +" ");
+                dto.add(new AlarmDTO(list.get(i), DetailActivity.class));
             }
 
         }catch (Exception e) {
-            Toast.makeText(RecordingActivity.this,"오류발생",Toast.LENGTH_SHORT).show();
+            Toast.makeText(AlarmActivity.this,"오류발생",Toast.LENGTH_SHORT).show();
         }
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
@@ -102,7 +92,7 @@ public class RecordingActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             try {
                 String str;
-                URL url = new URL("http://192.168.56.1:8081/WellDeep/recording_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
+                URL url = new URL("http://192.168.56.1:8081/WellDeep/Alarm_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.
