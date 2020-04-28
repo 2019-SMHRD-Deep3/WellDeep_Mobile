@@ -19,6 +19,7 @@
         <activity android:name=".JoinActivity" />
         <activity android:name=".QuestionActivity" />
         <activity android:name=".RecordingActivity" />
+        <activity android:name=".ShowActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
