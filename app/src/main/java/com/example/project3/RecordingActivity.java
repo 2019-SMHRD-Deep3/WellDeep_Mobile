@@ -17,17 +17,22 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RecordingActivity extends AppCompatActivity {
 
@@ -51,7 +56,18 @@ public class RecordingActivity extends AppCompatActivity {
         try {
             String result  = new CustomTask().execute(id_final).get();
             Log.d("받아온 값", result);
-            dto.add(new RecordingDTO(result, DetailActivity.class));
+
+            JSONObject jsonObject = new JSONObject(result); //result를 인자로 넣어 jsonObject를 생성한다.
+
+            JSONArray jsonArray = jsonObject.getJSONArray("dataSet"); //"dataSet"의 jsonObject들을 배열로 저장한다.
+
+            ArrayList<String> list = new ArrayList<String>();
+
+            for(int i=0; i<jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
+                jsonObject = jsonArray.getJSONObject(i);
+                list.add(jsonObject.getString("r_time") +" "+ jsonObject.getString("p_id") +" ");
+                dto.add(new RecordingDTO(list.get(i), DetailActivity.class));
+            }
 
         }catch (Exception e) {
             Toast.makeText(RecordingActivity.this,"오류발생",Toast.LENGTH_SHORT).show();
@@ -59,9 +75,6 @@ public class RecordingActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         lv.setAdapter(adapter);
-
-        dto.add(new RecordingDTO("녹음1", DetailActivity.class));
-
 
         for (int i = 0; i < dto.size(); i++) {
             items.add((i+1)+". "+dto.get(i).getTitle());
@@ -122,5 +135,6 @@ public class RecordingActivity extends AppCompatActivity {
             return receiveMsg;
         }
     }
+
 }
 
