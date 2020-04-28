@@ -60,7 +60,8 @@ public class RecordingActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         lv.setAdapter(adapter);
 
-        dto.add(new RecordingDTO("녹음1", DetailActivity.class));
+        dto.add(new RecordingDTO("녹음", DetailActivity.class));
+        dto.add(new RecordingDTO("영상", DetailActivity.class));
 
 
         for (int i = 0; i < dto.size(); i++) {
