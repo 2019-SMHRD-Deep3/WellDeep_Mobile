@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_question, btn_modify, btn_view, btn_child;
+    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist;
     TextView tv_id;
 
     @Override
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btn_question = findViewById(R.id.btn_question);
         btn_modify = findViewById(R.id.btn_modify);
         btn_child = findViewById(R.id.btn_child);
+        btn_childlist = findViewById(R.id.btn_childlist);
 
         tv_id = findViewById(R.id.tv_id);
 
@@ -58,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ChildActivity.class);
+                intent.putExtra("loginid",id_final);
+                startActivity(intent);
+            }
+        });
+        btn_childlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ChildListActivity.class);
                 intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }

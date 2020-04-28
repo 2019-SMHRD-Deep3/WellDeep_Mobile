@@ -77,9 +77,6 @@ public class RecordingActivity extends AppCompatActivity {
         lv.setAdapter(adapter);
 
 
-        dto.add(new RecordingDTO("녹음", DetailActivity.class));
-        dto.add(new RecordingDTO("영상", DetailActivity.class));
-
 
         for (int i = 0; i < dto.size(); i++) {
             items.add((i+1)+". "+dto.get(i).getTitle());
