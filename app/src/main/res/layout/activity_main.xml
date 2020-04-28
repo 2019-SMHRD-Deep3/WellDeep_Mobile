@@ -67,6 +67,18 @@
         app:layout_constraintTop_toTopOf="@+id/btn_view"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/btn_childlist"
+        android:layout_width="98dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_draw"
+        android:text="전체자녀보기"
+        android:textColor="#53435b"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_child" />
+
     <TextView
         android:id="@+id/tv_id"
         android:layout_width="66dp"

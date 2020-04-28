@@ -35,7 +35,6 @@ public class JoinUpdateActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
 
-
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_submit = findViewById(R.id.btn_submit);
 
@@ -44,7 +43,6 @@ public class JoinUpdateActivity extends AppCompatActivity {
         et_id = findViewById(R.id.et_id);
         et_id.setText(id_final);
         et_id.setEnabled(false);
-        et_pw = findViewById(R.id.et_pw);
         et_addr = findViewById(R.id.et_addr);
         et_tel = findViewById(R.id.et_tel);
         et_name = findViewById(R.id.et_name);
