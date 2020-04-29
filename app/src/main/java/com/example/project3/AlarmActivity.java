@@ -66,8 +66,6 @@ public class AlarmActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         lv.setAdapter(adapter);
 
-
-
         for (int i = 0; i < dto.size(); i++) {
             items.add((i+1)+". "+dto.get(i).getTitle());
         }
@@ -78,6 +76,8 @@ public class AlarmActivity extends AppCompatActivity {
                 //position --> 클릭한 위치를 알려줌
                 //최상단에 있는 item을 클릭시 --> position의 번호는 ??? 0
                 Intent intent = new Intent(getApplicationContext(), dto.get(position).getPage());
+                String[] num = items.get(position).split(". "); // 알람 번호
+                intent.putExtra("num", num); // 알람 번호 DetailActivity로 넘기기
                 intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
