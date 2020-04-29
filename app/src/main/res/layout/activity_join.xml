@@ -22,10 +22,11 @@
     <EditText
         android:id="@+id/et_name"
         android:layout_width="0dp"
-        android:layout_height="23dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/et_default_drawable"
+        android:background="@drawable/et_draw"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="16sp"
@@ -34,24 +35,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/join_name" />
 
-    <TextView
-        android:id="@+id/join_sex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="성별"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_tel" />
 
     <Button
         android:id="@+id/btn_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_shape"
         android:text="Submit"
         android:textColor="#53435B"
@@ -62,15 +52,13 @@
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_shape"
         android:text="Cancel"
         android:textColor="#53435B"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_sex" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/join_pw"
@@ -87,10 +75,11 @@
     <EditText
         android:id="@+id/et_id"
         android:layout_width="0dp"
-        android:layout_height="23dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/et_default_drawable"
+        android:background="@drawable/et_draw"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="16sp"
@@ -114,10 +103,11 @@
     <EditText
         android:id="@+id/et_tel"
         android:layout_width="0dp"
-        android:layout_height="23dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/et_default_drawable"
+        android:background="@drawable/et_draw"
         android:ems="10"
         android:inputType="phone"
         android:textSize="16sp"
@@ -129,10 +119,11 @@
     <EditText
         android:id="@+id/et_pw"
         android:layout_width="0dp"
-        android:layout_height="23dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/et_default_drawable"
+        android:background="@drawable/et_draw"
         android:ems="10"
         android:inputType="textPassword"
         android:textSize="16sp"
@@ -144,10 +135,11 @@
     <EditText
         android:id="@+id/et_addr"
         android:layout_width="0dp"
-        android:layout_height="23dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/et_default_drawable"
+        android:background="@drawable/et_draw"
         android:ems="10"
         android:inputType="text"
         android:textSize="16sp"
@@ -180,16 +172,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+    <TextView
+        android:id="@+id/join_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="성별"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_tel" />
+
     <RadioGroup
         android:id="@+id/rg"
-        android:layout_width="325dp"
-        android:layout_height="196dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
+        android:layout_width="317dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.786"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_tel"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
 
 
@@ -197,15 +201,13 @@
             android:id="@+id/radio_man"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
             android:text="남자" />
 
         <RadioButton
             android:id="@+id/radio_women"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="236dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginLeft="10dp"
             android:checked="true"
             android:text="여자" />
 
