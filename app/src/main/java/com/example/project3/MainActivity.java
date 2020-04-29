@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         final String addr = intent.getExtras().getString("addr");
         final String phone = intent.getExtras().getString("phone");
         final String name = intent.getExtras().getString("name");
+        final String sex = intent.getExtras().getString("sex");
         tv_id.setText(id_final);
 
         btn_view.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("addr",addr);
                 intent.putExtra("phone",phone);
                 intent.putExtra("name",name);
+                intent.putExtra("sex",sex);
                 startActivity(intent);
             }
         });

@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     String addr = jsonObject.getString("p_addr");
                     String phone = jsonObject.getString("p_phone");
                     String name = jsonObject.getString("p_name");
+                    String sex =  jsonObject.getString("p_sex");
 
                     if(result.contains("p_pw")) {
                         Toast.makeText(LoginActivity.this,"로그인", Toast.LENGTH_SHORT).show();
@@ -78,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("addr", addr);
                         intent.putExtra("phone", phone);
                         intent.putExtra("name", name);
+                        intent.putExtra("sex", sex);
                         startActivity(intent);
                         finish();}
 
