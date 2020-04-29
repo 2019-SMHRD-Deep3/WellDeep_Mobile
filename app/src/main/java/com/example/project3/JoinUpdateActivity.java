@@ -26,14 +26,20 @@ public class JoinUpdateActivity extends AppCompatActivity {
     Button btn_cancel,btn_submit;
     EditText et_name, et_id, et_pw, et_addr, et_tel;
     RadioGroup rg;
+    RadioButton radio_man, radio_women;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join_fix);
+        setContentView(R.layout.activity_join_update);
 
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
+        final String pw = intent.getExtras().getString("pw");
+        final String addr = intent.getExtras().getString("addr");
+        final String phone = intent.getExtras().getString("phone");
+        final String name = intent.getExtras().getString("name");
+        final String sex = intent.getExtras().getString("sex");
 
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_submit = findViewById(R.id.btn_submit);
@@ -43,18 +49,35 @@ public class JoinUpdateActivity extends AppCompatActivity {
         et_id = findViewById(R.id.et_id);
         et_id.setText(id_final);
         et_id.setEnabled(false);
+        et_pw = findViewById(R.id.et_pw);
+        et_pw.setText(pw);
         et_addr = findViewById(R.id.et_addr);
+        et_addr.setText(addr);
         et_tel = findViewById(R.id.et_tel);
+        et_tel.setText(phone);
         et_name = findViewById(R.id.et_name);
-        final RadioButton rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
+        et_name.setText(name);
+        radio_man = findViewById(R.id.radio_man);
+        radio_women = findViewById(R.id.radio_women);
+
+        if(sex.contains("남")) {
+            radio_man.setChecked(true);
+            radio_women.setChecked(false);
+        } else {
+            radio_women.setChecked(true);
+            radio_man.setChecked(false);
+        }
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(JoinUpdateActivity.this, MainActivity.class);
                 intent.putExtra("loginid",id_final);
-
-
+                intent.putExtra("pw",pw);
+                intent.putExtra("addr",addr);
+                intent.putExtra("phone",phone);
+                intent.putExtra("name",name);
+                intent.putExtra("sex",sex);
                 startActivity(intent);
             }
         });
@@ -63,6 +86,8 @@ public class JoinUpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final RadioButton rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
+
                 String id = et_id.getText().toString();
                 String pw = et_pw.getText().toString();
                 String addr = et_addr.getText().toString();
@@ -70,8 +95,10 @@ public class JoinUpdateActivity extends AppCompatActivity {
                 String name = et_name.getText().toString();
                 String sex = rd.getText().toString();
 
+                Log.d("성별",sex);
+
                 try {
-                    String result = new CustomTask().execute(id,pw,addr,tel,name,sex,"join").get();
+                    String result = new CustomTask().execute(id,pw,addr,tel,name,sex,"update").get();
                     Log.d("결과",result);
 
                     if (result.contains("0")) {
@@ -80,7 +107,13 @@ public class JoinUpdateActivity extends AppCompatActivity {
                         Toast.makeText(JoinUpdateActivity.this,"회원수정실패", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(JoinUpdateActivity.this, "회원수정성공", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(JoinUpdateActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(JoinUpdateActivity.this, MainActivity.class);
+                        intent.putExtra("loginid",id_final);
+                        intent.putExtra("pw",pw);
+                        intent.putExtra("addr",addr);
+                        intent.putExtra("phone",phone);
+                        intent.putExtra("name",name);
+                        intent.putExtra("sex",sex);
                         startActivity(intent);
                         finish();}
 
