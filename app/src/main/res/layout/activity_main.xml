@@ -41,7 +41,7 @@
         android:id="@+id/btn_modify"
         android:layout_width="93dp"
         android:layout_height="31dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/btn_shape"
         android:text="회원정보수정"
@@ -53,13 +53,15 @@
 
     <Button
         android:id="@+id/btn_childlist"
-        android:layout_width="98dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/button_draw"
+        android:layout_width="276dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/btn_shape"
         android:text="전체자녀보기"
-        android:textColor="#53435b"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_child" />
 
@@ -67,7 +69,6 @@
         android:id="@+id/tv_id"
         android:layout_width="66dp"
         android:layout_height="28dp"
-        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="#53435B"
         app:layout_constraintBottom_toTopOf="@+id/btn_view"
@@ -92,8 +93,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="298dp"
-        android:layout_height="209dp"
+        android:layout_width="319dp"
+        android:layout_height="175dp"
         android:layout_marginTop="76dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
