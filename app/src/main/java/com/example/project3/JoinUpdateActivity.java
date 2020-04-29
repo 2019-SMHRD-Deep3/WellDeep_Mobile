@@ -30,10 +30,14 @@ public class JoinUpdateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join_fix);
+        setContentView(R.layout.activity_join_update);
 
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
+        final String pw = intent.getExtras().getString("pw");
+        final String addr = intent.getExtras().getString("addr");
+        final String phone = intent.getExtras().getString("phone");
+        final String name = intent.getExtras().getString("name");
 
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_submit = findViewById(R.id.btn_submit);
@@ -43,9 +47,14 @@ public class JoinUpdateActivity extends AppCompatActivity {
         et_id = findViewById(R.id.et_id);
         et_id.setText(id_final);
         et_id.setEnabled(false);
+        et_pw = findViewById(R.id.et_pw);
+        et_pw.setText(pw);
         et_addr = findViewById(R.id.et_addr);
+        et_addr.setText(addr);
         et_tel = findViewById(R.id.et_tel);
+        et_tel.setText(phone);
         et_name = findViewById(R.id.et_name);
+        et_name.setText(name);
         final RadioButton rd = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +62,10 @@ public class JoinUpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(JoinUpdateActivity.this, MainActivity.class);
                 intent.putExtra("loginid",id_final);
-
-
+                intent.putExtra("pw",pw);
+                intent.putExtra("addr",addr);
+                intent.putExtra("phone",phone);
+                intent.putExtra("name",name);
                 startActivity(intent);
             }
         });

@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -57,15 +60,24 @@ public class LoginActivity extends AppCompatActivity {
                     String result  = new CustomTask().execute(loginid,loginpw,"login").get();
                     Log.d("통신 결과", result);
 
-                    if(result.equals("false")) {
-                        Toast.makeText(LoginActivity.this,"로그인실패", Toast.LENGTH_SHORT).show();
-                    } else if(result == null) {
-                        Toast.makeText(LoginActivity.this,"로그인실패", Toast.LENGTH_SHORT).show();
-                    } else {
+                    JSONObject jsonObject = new JSONObject(result); //result를 인자로 넣어 jsonObject를 생성한다.
+
+                    JSONArray jsonArray = jsonObject.getJSONArray("dataSet"); //"dataSet"의 jsonObject들을 배열로 저장한다.
+                    jsonObject = jsonArray.getJSONObject(0);
+
+                    String pw =  jsonObject.getString("p_pw");
+                    String addr = jsonObject.getString("p_addr");
+                    String phone = jsonObject.getString("p_phone");
+                    String name = jsonObject.getString("p_name");
+
+                    if(result.contains("p_pw")) {
                         Toast.makeText(LoginActivity.this,"로그인", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("loginid",loginid);
-                        intent.putExtra("loginpw",loginpw);
+                        intent.putExtra("pw", pw);
+                        intent.putExtra("addr", addr);
+                        intent.putExtra("phone", phone);
+                        intent.putExtra("name", name);
                         startActivity(intent);
                         finish();}
 
@@ -85,12 +97,12 @@ public class LoginActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             try {
                 String str;
-                URL url = new URL("http://192.168.56.1:8081/WellDeep/login_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
+                URL url = new URL("http://192.168.56.1:8081/WellDeep/join_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.
                 OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-                sendMsg = "id="+strings[0]+"&pw="+strings[1];//보낼 정보인데요. GET방식으로 작성합니다. ex) "id=rain483&pwd=1234";
+                sendMsg = "id="+strings[0]+"&pw="+strings[1]+"&type="+strings[2];//보낼 정보인데요. GET방식으로 작성합니다. ex) "id=rain483&pwd=1234";
                 //회원가입처럼 보낼 데이터가 여러 개일 경우 &로 구분하여 작성합니다.
                 osw.write(sendMsg);//OutputStreamWriter에 담아 전송합니다.
                 osw.flush();
@@ -104,8 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                         buffer.append(str);
                     }
                     receiveMsg = buffer.toString();
-                    Log.d("받아온 값",receiveMsg);
-
+                    
                 } else {
                     Log.i("통신 결과", conn.getResponseCode()+"에러");
                     // 통신이 실패했을 때 실패한 이유를 알기 위해 로그를 찍습니다.
