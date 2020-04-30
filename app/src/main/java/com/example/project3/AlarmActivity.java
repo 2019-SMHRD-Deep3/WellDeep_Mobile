@@ -55,7 +55,7 @@ public class AlarmActivity extends AppCompatActivity {
 
             for(int i=0; i<jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
                 jsonObject = jsonArray.getJSONObject(i);
-                list.add(jsonObject.getString("a_time") +" "+ jsonObject.getString("a_number") +" ");
+                list.add(jsonObject.getString("a_time") +" "+ jsonObject.getString("a_number"));
                 dto.add(new AlarmDTO(list.get(i), DetailActivity.class));
             }
 
@@ -76,8 +76,9 @@ public class AlarmActivity extends AppCompatActivity {
                 //position --> 클릭한 위치를 알려줌
                 //최상단에 있는 item을 클릭시 --> position의 번호는 ??? 0
                 Intent intent = new Intent(getApplicationContext(), dto.get(position).getPage());
-                String[] num = items.get(position).split(". "); // 알람 번호
-                intent.putExtra("num", num); // 알람 번호 DetailActivity로 넘기기
+                String num = items.get(position);
+                String alarm_num = num.substring(num.lastIndexOf(" ")); // 알람 번호
+                intent.putExtra("num", alarm_num); // 알람 번호 DetailActivity로 넘기기
                 intent.putExtra("loginid",id_final);
                 startActivity(intent);
             }
