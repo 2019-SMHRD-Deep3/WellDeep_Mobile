@@ -24,7 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist;
+    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video;
     TextView tv_id;
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btn_modify = findViewById(R.id.btn_modify);
         btn_child = findViewById(R.id.btn_child);
         btn_childlist = findViewById(R.id.btn_childlist);
-
+        btn_video = findViewById(R.id.btn_video);
         tv_id = findViewById(R.id.tv_id);
 
         Intent intent = getIntent();
@@ -48,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         final String name = intent.getExtras().getString("name");
         final String sex = intent.getExtras().getString("sex");
         tv_id.setText(id_final);
+
+        btn_video.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, VideoActivity.class);
+                startActivity(intent);
+            }
+        }));
 
         btn_view.setOnClickListener(new View.OnClickListener() {
             @Override

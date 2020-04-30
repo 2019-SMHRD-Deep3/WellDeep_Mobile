@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".VideoActivity"></activity>
         <activity android:name=".AlarmActivity" />
-        <activity android:name=".ChildUpdateActivity"></activity>
+        <activity android:name=".ChildUpdateActivity" />
         <activity android:name=".ChildListActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".ChildActivity" />
