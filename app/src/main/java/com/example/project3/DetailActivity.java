@@ -52,8 +52,8 @@ public class DetailActivity extends AppCompatActivity {
         tv_test = findViewById(R.id.tv_test);
         Intent intent = getIntent();
 
-        String[] num = intent.getExtras().getStringArray("num"); // 클릭한 알람 번호 가져오기
-        tv_test.setText(num[0]); // 알람 번호 잘 가져오는지 테스트
+        String num = intent.getExtras().getString("num"); // 클릭한 알람 번호 가져오기
+        tv_test.setText(num); // 알람 번호 잘 가져오는지 테스트
         final String id_final = intent.getExtras().getString("loginid");
 
         btn_play.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +83,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        final String alarm_num = num[0];
+        final String alarm_num = num;
 
         try {
             String result  = new DetailActivity.CustomTask().execute(alarm_num).get();
