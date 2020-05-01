@@ -1,79 +1,119 @@
 package com.example.project3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class ChildUpdateActivity extends AppCompatActivity {
+public class ChildAdapter extends BaseAdapter {
 
-    EditText et_c_name, et_c_age, et_c_sex;
-    ImageView iv_c_photo;
-    Button btn_submit;
-    String img_url;
+    private Context context;
+    private int child_item;
+    private ArrayList<ChildDTO> items;
+    private LayoutInflater inflater;
 
+
+    public ChildAdapter(Context context, int child_item, ArrayList<ChildDTO> items) {
+
+        this.context = context;
+        this.child_item = child_item;
+        this.items = items;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_child_update);
+    public int getCount() {
+        return items.size();
+    }
 
-        btn_submit = findViewById(R.id.btn_submit);
+    @Override
+    public Object getItem(int position) {
+        return items.get(position);
+    }
 
-        et_c_name = findViewById(R.id.et_c_name);
-        et_c_age = findViewById(R.id.et_c_age);
-        et_c_sex = findViewById(R.id.et_c_sex);
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-        iv_c_photo = findViewById(R.id.iv_c_photo);
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
-
-        Intent intent = getIntent();
-        final String name = intent.getExtras().getString("c_name");
-        final String age = intent.getExtras().getString("c_age");
-        final String sex = intent.getExtras().getString("c_sex");
-        final String[] num = intent.getExtras().getStringArray("c_number");
-
-
-
-        et_c_name.setText(name);
-        et_c_age.setText(age);
-        et_c_sex.setText(sex);
-
-        Log.d("sex2", sex);
-        Log.d("age2", age);
+        if (convertView == null) {
+            convertView = inflater.inflate(child_item, parent, false);
+        }
 
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
+        final TextView tv_name = convertView.findViewById(R.id.tv_name);
+        final TextView tv_age = convertView.findViewById(R.id.tv_age);
+        final ImageView im_img = convertView.findViewById(R.id.im_img);
+        final TextView tv_sex = convertView.findViewById(R.id.tv_sex);
+        final  TextView tv_number = convertView.findViewById(R.id.tv_num);
+        final Button btn_del = convertView.findViewById(R.id.btn_del);
+
+        tv_name.setText(items.get(position).getC_name());
+        tv_age.setText(items.get(position).getC_age());
+        tv_sex.setText(items.get(position).getC_sex());
+        tv_number.setText(items.get(position).getC_number());
+
+
+
+
+        convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, ChildUpdateActivity.class);
+                intent.putExtra("c_name", tv_name.getText().toString());
+                intent.putExtra("c_age", tv_age.getText().toString());
+                intent.putExtra("c_sex", tv_sex.getText().toString());
+                intent.putExtra("c_number", tv_number.getText().toString());
+
+
+
+                context.startActivity(intent);
             }
         });
 
 
+        btn_del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               /*Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show();
+
+
+                items.remove(position);
+                notifyDataSetChanged();*/
+                String num = tv_number.getText().toString();
+                Log.d("가져온 넘버",num);
+
+
+            }
+        });
+
+        return convertView;
     }
+
 
     class CustomTask extends AsyncTask<String, Void, String> {
         String sendMsg, receiveMsg;
@@ -83,7 +123,7 @@ public class ChildUpdateActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             try {
                 String str;
-                URL url = new URL("http://192.168.56.1:8081/WellDeep/childlist_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
+                URL url = new URL("http://192.168.56.1:8081/WellDeep/Childdel_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.
@@ -120,4 +160,3 @@ public class ChildUpdateActivity extends AppCompatActivity {
         }
     }
 }
-
