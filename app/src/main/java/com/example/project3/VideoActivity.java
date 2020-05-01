@@ -20,24 +20,24 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
-        btn_cam = findViewById(R.id.btn_cam);
-        btn_cam2 = findViewById(R.id.btn_cam2);
-        btn_cam3 = findViewById(R.id.btn_cam3);
-        btn_cam4 = findViewById(R.id.btn_cam4);
+       btn_cam = findViewById(R.id.btn_cam);
+       btn_cam2 = findViewById(R.id.btn_cam2);
+       btn_cam3 = findViewById(R.id.btn_cam3);
+       btn_cam4 = findViewById(R.id.btn_cam4);
 
       /* tv_cam = findViewById(R.id.tv_cam);
        tv_cam2 = findViewById(R.id.tv_cam2);
        tv_cam3 = findViewById(R.id.tv_cam3);
        tv_cam4 = findViewById(R.id.tv_cam4);
 */
-        // 비디오 컴포넌트들을 변수에 지정
-        videoView = (VideoView) findViewById(R.id.BigCam);
-        testvideo = (VideoView) findViewById(R.id.Cam1);
-        testvideo2 = (VideoView) findViewById(R.id.Cam2);
-        testvideo3 = (VideoView) findViewById(R.id.Cam3);
-        testvideo4 = (VideoView) findViewById(R.id.Cam4);
+       // 비디오 컴포넌트들을 변수에 지정
+       videoView = (VideoView) findViewById(R.id.BigCam);
+       testvideo = (VideoView) findViewById(R.id.Cam1);
+       testvideo2 = (VideoView) findViewById(R.id.Cam2);
+       testvideo3 = (VideoView) findViewById(R.id.Cam3);
+       testvideo4 = (VideoView) findViewById(R.id.Cam4);
 
-        // 들어오면 가장 큰 화면에 첫번째 영상 실행
+       // 들어오면 가장 큰 화면에 첫번째 영상 실행
         Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo);
 
         videoView.setVideoURI(video);
@@ -46,7 +46,7 @@ public class VideoActivity extends AppCompatActivity {
 
 
 
-        // 아래쪽 4개화면에 각자 영상 실행
+       // 아래쪽 4개화면에 각자 영상 실행
 
         // cam1
         Uri video2 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo);
