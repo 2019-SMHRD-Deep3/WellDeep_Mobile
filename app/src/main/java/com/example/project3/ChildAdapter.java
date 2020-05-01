@@ -28,6 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class ChildAdapter extends BaseAdapter {
 
@@ -72,7 +73,7 @@ public class ChildAdapter extends BaseAdapter {
         final TextView tv_age = convertView.findViewById(R.id.tv_age);
         final TextView tv_sex = convertView.findViewById(R.id.tv_sex);
         final  TextView tv_number = convertView.findViewById(R.id.tv_num);
-        final Button btn_del = convertView.findViewById(R.id.btn_del);
+
 
 
         tv_name.setText(items.get(position).getC_name());
@@ -102,32 +103,15 @@ public class ChildAdapter extends BaseAdapter {
                 intent.putExtra("c_sex", tv_sex.getText().toString());
                 intent.putExtra("c_number", tv_number.getText().toString());
 
-
-
-
-
                 context.startActivity(intent);
             }
         });
 
 
-        btn_del.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               /*Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show();
-                items.remove(position);
-                notifyDataSetChanged();*/
-                String num = tv_number.getText().toString();
-                Log.d("가져온 넘버",num);
-
-            }
-        });
-
 
 
 
         return convertView;
-
 
     }
 
@@ -140,13 +124,12 @@ public class ChildAdapter extends BaseAdapter {
         protected String doInBackground(String... strings) {
             try {
                 String str;
-                URL url = new URL("http://192.168.56.1:8081/WellDeep/Childlist_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
+                URL url = new URL("http://192.168.56.1:8081/WellDeep/Childdel_get_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.
                 OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-                sendMsg = "id=" + strings[0] + "&pw=" + strings[1] + "&addr=" + strings[2] +
-                        "&tel=" + strings[3] + "&name=" + strings[4] + "&sex=" + strings[5] + "&type=" + strings[6];
+                sendMsg = "num=" + strings[0];
                 //보낼 정보인데요. GET방식으로 작성합니다. ex) "id=rain483&pwd=1234";
                 //회원가입처럼 보낼 데이터가 여러 개일 경우 &로 구분하여 작성합니다.
                 osw.write(sendMsg);//OutputStreamWriter에 담아 전송합니다.
