@@ -6,4 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".ChildUpdateActivity">
 
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="#FBD157"
+        android:text="Submit"
+        android:textColor="#53435B"
+        app:layout_constraintEnd_toEndOf="@+id/iv_c_photo"
+        app:layout_constraintStart_toStartOf="@+id/iv_c_photo"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <ImageView
+        android:id="@+id/iv_c_photo"
+        android:layout_width="175dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_logo" />
+
+
+    <TextView
+        android:id="@+id/tv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@null"
+        android:text="MomSee"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_c_name"
+        android:layout_width="50dp"
+        android:layout_height="39dp"
+        android:background="@null"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
+        app:layout_constraintEnd_toEndOf="@+id/iv_c_photo"
+        app:layout_constraintStart_toEndOf="@+id/textView16" />
+
+    <EditText
+        android:id="@+id/et_c_sex"
+        android:layout_width="37dp"
+        android:layout_height="39dp"
+        android:background="@null"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="@+id/iv_c_photo"
+        app:layout_constraintStart_toEndOf="@+id/textView18" />
+
+    <EditText
+        android:id="@+id/et_c_age"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:background="@null"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView17"
+        app:layout_constraintEnd_toEndOf="@+id/iv_c_photo"
+        app:layout_constraintStart_toEndOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="20dp"
+        android:layout_height="39dp"
+        android:text="세"
+        android:textColor="#050505"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_c_age"
+        app:layout_constraintEnd_toEndOf="@+id/iv_c_photo"
+        app:layout_constraintStart_toEndOf="@+id/et_c_age" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginTop="30dp"
+        android:text="이름 :"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_c_photo"
+        app:layout_constraintTop_toBottomOf="@+id/iv_c_photo" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginTop="30dp"
+        android:text="나이 :"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_c_photo"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginTop="30dp"
+        android:text="성별 :"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_c_photo"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

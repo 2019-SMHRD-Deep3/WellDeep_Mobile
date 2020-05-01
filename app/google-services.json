@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1042015235698",
+    "firebase_url": "https://welldeep-b1b31.firebaseio.com",
+    "project_id": "welldeep-b1b31",
+    "storage_bucket": "welldeep-b1b31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042015235698:android:2e774799deb301bc801ceb",
+        "android_client_info": {
+          "package_name": "com.example.project3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042015235698-9ulq6qot0c8nq7a3lin70nujhb9m2dto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.project3",
+            "certificate_hash": "4724b339ab75c5fb1a56914f771388cff346781e"
+          }
+        },
+        {
+          "client_id": "1042015235698-9d6uif8rj93eer2nn1o8uu0lsgou2amr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5reoMLVzcTq7W2cMhmxo8VIKG33ewOFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042015235698-9d6uif8rj93eer2nn1o8uu0lsgou2amr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

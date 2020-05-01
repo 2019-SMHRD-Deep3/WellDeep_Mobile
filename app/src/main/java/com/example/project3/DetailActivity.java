@@ -38,6 +38,7 @@ public class DetailActivity extends AppCompatActivity {
     MediaPlayer player;
     String img_url;
     String voice_url;
+    int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +60,16 @@ public class DetailActivity extends AppCompatActivity {
         btn_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                player = MediaPlayer.create(getApplicationContext(),R.raw.anysong);
-
-                player.start();
+                playAudio();
             }
         });
 
         btn_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                player.stop();
+                stopAudio();
             }
         });
-
 
         btn_call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +143,37 @@ public class DetailActivity extends AppCompatActivity {
             }
             //jsp로부터 받은 리턴 값입니다.
             return receiveMsg;
+        }
+    }
+
+    private void playAudio() {
+        try {
+            closePlayer();
+
+            player = new MediaPlayer();
+            player.setDataSource(voice_url); // 음성파일 경로
+            player.prepare();
+            player.start();
+
+            Toast.makeText(this, "재생 시작됨.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void stopAudio() {
+        if (player != null && player.isPlaying()) {
+            player.stop();
+
+            Toast.makeText(this, "정지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /* 녹음 시 마이크 리소스 제한. 누군가가 lock 걸어놓으면 다른 앱에서 사용할 수 없음.
+     * 따라서 꼭 리소스를 해제해주어야함. */
+    public void closePlayer() {
+        if (player != null) {
+            player.release();
+            player = null;
         }
     }
 
