@@ -33,7 +33,6 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView iv_img;
-    TextView tv_test;
     Button btn_play, btn_stop, btn_call;
     MediaPlayer player;
     String img_url;
@@ -50,11 +49,9 @@ public class DetailActivity extends AppCompatActivity {
         btn_stop = findViewById(R.id.btn_stop);
         btn_call = findViewById(R.id.btn_call);
 
-        tv_test = findViewById(R.id.tv_test);
         Intent intent = getIntent();
 
         String num = intent.getExtras().getString("num"); // 클릭한 알람 번호 가져오기
-        tv_test.setText(num); // 알람 번호 잘 가져오는지 테스트
         final String id_final = intent.getExtras().getString("loginid");
 
         btn_play.setOnClickListener(new View.OnClickListener() {
