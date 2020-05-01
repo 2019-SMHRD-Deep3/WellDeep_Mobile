@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
@@ -64,31 +68,40 @@ public class ChildAdapter extends BaseAdapter {
             convertView = inflater.inflate(child_item, parent, false);
         }
 
-
         final TextView tv_name = convertView.findViewById(R.id.tv_name);
         final TextView tv_age = convertView.findViewById(R.id.tv_age);
         final TextView tv_sex = convertView.findViewById(R.id.tv_sex);
         final  TextView tv_number = convertView.findViewById(R.id.tv_num);
         final Button btn_del = convertView.findViewById(R.id.btn_del);
 
+
         tv_name.setText(items.get(position).getC_name());
         tv_age.setText(items.get(position).getC_age());
         tv_sex.setText(items.get(position).getC_sex());
         tv_number.setText(items.get(position).getC_number());
 
-        Log.d("number2",items.get(position).getC_number());
 
 
 
+        Log.d("number2Adapter",items.get(position).getC_number());
+        Log.d("name2Adapter",items.get(position).getC_name());
+        Log.d("age2Adapter",items.get(position).getC_age());
+        Log.d("sex2Adapter",items.get(position).getC_sex());
+
+
+
+//        String num = items.get(position);
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ChildUpdateActivity.class);
+
                 intent.putExtra("c_name", tv_name.getText().toString());
                 intent.putExtra("c_age", tv_age.getText().toString());
                 intent.putExtra("c_sex", tv_sex.getText().toString());
                 intent.putExtra("c_number", tv_number.getText().toString());
+
 
 
 
@@ -102,16 +115,16 @@ public class ChildAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                /*Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show();
-
-
                 items.remove(position);
                 notifyDataSetChanged();*/
                 String num = tv_number.getText().toString();
                 Log.d("가져온 넘버",num);
 
-
             }
         });
+
+
+
 
         return convertView;
 
@@ -127,7 +140,7 @@ public class ChildAdapter extends BaseAdapter {
         protected String doInBackground(String... strings) {
             try {
                 String str;
-                URL url = new URL("http://192.168.56.1:8081/WellDeep/Childdel_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
+                URL url = new URL("http://192.168.56.1:8081/WellDeep/Childlist_android.jsp"); //보낼 jsp 주소를 ""안에 작성합니다.
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.

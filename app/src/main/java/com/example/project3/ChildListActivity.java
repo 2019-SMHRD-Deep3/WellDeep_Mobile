@@ -44,6 +44,7 @@ public class ChildListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
 
+
         items = new ArrayList<>();
         dto = new ArrayList<>();
         lv = findViewById(R.id.lvPage);
@@ -51,64 +52,26 @@ public class ChildListActivity extends AppCompatActivity {
 
         try {
             String result = new CustomTask().execute(id_final).get();
-            Log.d("받아온 값", result);
+            Log.d("받아온 값Adapter", result);
 
             JSONObject jsonObject = new JSONObject(result); //result를 인자로 넣어 jsonObject를 생성한다.
 
-            JSONArray jsonArray = jsonObject.getJSONArray("dataSet"); //"dataSet"의 jsonObject들을 배열로 저장한다.
-
-            ArrayList<ChildDTO> list = new ArrayList<ChildDTO>();
+            JSONArray jsonArray = jsonObject.getJSONArray("dataSet3"); //"dataSet"의 jsonObject들을 배열로 저장한다.
 
             for (int i = 0; i < jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
                 jsonObject = jsonArray.getJSONObject(i);
-//                list.add(jsonObject.getString("c_name") + " " + jsonObject.getString("c_age") + " ");
                 items.add(new ChildDTO(jsonObject.getString("c_name"),jsonObject.getString("c_age"),jsonObject.getString("c_sex"),jsonObject.getString("c_photo"),jsonObject.getString("c_number")));
-//                name = jsonObject.getString("c_name");
-            /*    age = jsonObject.getString("c_age");
-                sex = jsonObject.getString("c_sex");
-                photo = jsonObject.getString("c_photo");*/
-
-
-//                dto.add(new ChildMoveDTO(list.get(i), ChildUpdateActivity.class));
 
             }
-
-
         } catch (Exception e) {
             Toast.makeText(ChildListActivity.this, "오류발생", Toast.LENGTH_SHORT).show();
         }
 
-//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         adapter = new ChildAdapter(this, R.layout.child_item, items);
         lv.setAdapter(adapter);
 
-
-      /*  for (int i = 0; i < dto.size(); i++) {
-            items.add((i + 1) + ". " + dto.get(i).getName());
-        }*/
-
-   /*     lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                //position --> 클릭한 위치를 알려줌
-                //최상단에 있는 item을 클릭시 --> position의 번호는 ??? 0
-                Intent intent = new Intent(getApplicationContext(), dto.get(0).getPage());
-
-                intent.putExtra("c_name",items.get(0).getC_name());
-                intent.putExtra("c_age",items.get(0).getC_age());
-                intent.putExtra("c_sex",items.get(0).getC_sex());
-                intent.putExtra("c_photo",items.get(0).getC_photo());
-
-
-
-
-              *//*  intent.putExtra("c_sex",items.get(position).getC_sex());
-                intent.putExtra("c_photo",items.get(position).getC_photo());*//*
-                startActivity(intent);
-            }
-        });*/
     }
+
     class CustomTask extends AsyncTask<String, Void, String> {
         String sendMsg, receiveMsg;
 
