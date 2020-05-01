@@ -53,7 +53,6 @@ public class ChildUpdateActivity extends AppCompatActivity {
         et_c_name = findViewById(R.id.et_c_name);
         et_c_age = findViewById(R.id.et_c_age);
         et_c_sex = findViewById(R.id.et_c_sex);
-        tv_test = findViewById(R.id.tv_test);
         iv_c_photo = findViewById(R.id.iv_c_photo);
 
 
