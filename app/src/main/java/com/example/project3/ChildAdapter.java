@@ -67,7 +67,6 @@ public class ChildAdapter extends BaseAdapter {
 
         final TextView tv_name = convertView.findViewById(R.id.tv_name);
         final TextView tv_age = convertView.findViewById(R.id.tv_age);
-        final ImageView im_img = convertView.findViewById(R.id.im_img);
         final TextView tv_sex = convertView.findViewById(R.id.tv_sex);
         final  TextView tv_number = convertView.findViewById(R.id.tv_num);
         final Button btn_del = convertView.findViewById(R.id.btn_del);
@@ -76,6 +75,8 @@ public class ChildAdapter extends BaseAdapter {
         tv_age.setText(items.get(position).getC_age());
         tv_sex.setText(items.get(position).getC_sex());
         tv_number.setText(items.get(position).getC_number());
+
+        Log.d("number2",items.get(position).getC_number());
 
 
 
@@ -88,6 +89,7 @@ public class ChildAdapter extends BaseAdapter {
                 intent.putExtra("c_age", tv_age.getText().toString());
                 intent.putExtra("c_sex", tv_sex.getText().toString());
                 intent.putExtra("c_number", tv_number.getText().toString());
+
 
 
 
@@ -112,6 +114,8 @@ public class ChildAdapter extends BaseAdapter {
         });
 
         return convertView;
+
+
     }
 
 

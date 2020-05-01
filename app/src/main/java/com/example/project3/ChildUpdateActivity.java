@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +34,11 @@ public class ChildUpdateActivity extends AppCompatActivity {
     EditText et_c_name, et_c_age, et_c_sex;
     ImageView iv_c_photo;
     Button btn_submit;
+    TextView tv_test;
+
+
     String img_url;
+
 
 
     @Override
@@ -46,24 +51,35 @@ public class ChildUpdateActivity extends AppCompatActivity {
         et_c_name = findViewById(R.id.et_c_name);
         et_c_age = findViewById(R.id.et_c_age);
         et_c_sex = findViewById(R.id.et_c_sex);
+        tv_test = findViewById(R.id.tv_test);
 
         iv_c_photo = findViewById(R.id.iv_c_photo);
 
 
+
         Intent intent = getIntent();
+
+
+        String num2 = intent.getExtras().getString("c_num");
+
         final String name = intent.getExtras().getString("c_name");
         final String age = intent.getExtras().getString("c_age");
         final String sex = intent.getExtras().getString("c_sex");
-        final String[] num = intent.getExtras().getStringArray("c_number");
+        final String num = intent.getExtras().getString("c_number");
+
 
 
 
         et_c_name.setText(name);
         et_c_age.setText(age);
         et_c_sex.setText(sex);
+        tv_test.setText(num);
 
+
+        Log.d("name2",name);
         Log.d("sex2", sex);
         Log.d("age2", age);
+
 
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +88,27 @@ public class ChildUpdateActivity extends AppCompatActivity {
             }
         });
 
+        final String child_num = num2;
+
+        try {
+            String result  = new ChildUpdateActivity.CustomTask().execute(child_num).get();
+            Log.d("받아온 값", result);
+
+            JSONObject jsonObject = new JSONObject(result); //result를 인자로 넣어 jsonObject를 생성한다.
+
+            JSONArray jsonArray = jsonObject.getJSONArray("dataSet"); //"dataSet"의 jsonObject들을 배열로 저장한다.
+
+            for(int i=0; i<jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
+                jsonObject = jsonArray.getJSONObject(i);
+                img_url = "http://192.168.56.1:8081/WellDeep/img/" + jsonObject.getString("c_photo"); // 이미지파일 가져오기
+
+            }
+            // Glide로 이미지 표시하기
+            Glide.with(this).load(img_url).into(iv_c_photo);
+
+        }catch (Exception e) {
+            Toast.makeText(ChildUpdateActivity.this,"오류발생",Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -88,8 +125,7 @@ public class ChildUpdateActivity extends AppCompatActivity {
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setRequestMethod("POST");//데이터를 POST 방식으로 전송합니다.
                 OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-                sendMsg = "id=" + strings[0] + "&pw=" + strings[1] + "&addr=" + strings[2] +
-                        "&tel=" + strings[3] + "&name=" + strings[4] + "&sex=" + strings[5] + "&type=" + strings[6];
+                sendMsg = "num=" + strings[0];
                 //보낼 정보인데요. GET방식으로 작성합니다. ex) "id=rain483&pwd=1234";
                 //회원가입처럼 보낼 데이터가 여러 개일 경우 &로 구분하여 작성합니다.
                 osw.write(sendMsg);//OutputStreamWriter에 담아 전송합니다.
