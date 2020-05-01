@@ -8,9 +8,8 @@
     tools:context=".VideoActivity">
 
 
-
     <VideoView
-        android:id="@+id/videoView"
+        android:id="@+id/BigCam"
         android:layout_width="wrap_content"
         android:layout_height="240dp"
         android:layout_alignParentBottom="true"
@@ -18,37 +17,138 @@
         android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="0.006" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="48dp"
+        android:id="@+id/btn_cam"
+        android:layout_width="72dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="292dp"
         android:text=" CAM 1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoView" />
+        app:layout_constraintTop_toBottomOf="@+id/BigCam" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:id="@+id/btn_cam2"
+        android:layout_width="68dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
         android:text="CAM 2"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/btn_cam"
+        app:layout_constraintTop_toTopOf="@+id/btn_cam" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_cam3"
+        android:layout_width="69dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:text="CAM 3"
+        app:layout_constraintStart_toEndOf="@+id/btn_cam2"
+        app:layout_constraintTop_toTopOf="@+id/btn_cam2" />
+
+    <Button
+        android:id="@+id/btn_cam4"
+        android:layout_width="70dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:text="CAM 4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_cam3"
+        app:layout_constraintTop_toTopOf="@+id/btn_cam3" />
+
+    <VideoView
+        android:id="@+id/Cam1"
+        android:layout_width="220dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BigCam"
+        app:layout_constraintVertical_bias="0.122" />
+
+    <VideoView
+        android:id="@+id/Cam2"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/Cam1"
+        app:layout_constraintTop_toTopOf="@+id/Cam1" />
+
+    <VideoView
+        android:id="@+id/Cam3"
+        android:layout_width="220dp"
+        android:layout_height="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Cam1" />
+
+    <VideoView
+        android:id="@+id/Cam4"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Cam3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Cam3"
+        app:layout_constraintTop_toBottomOf="@+id/Cam2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_cam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:text="CAM 1"
+        android:textColor="#49C51A"
+        app:layout_constraintBottom_toBottomOf="@+id/Cam1"
+        app:layout_constraintEnd_toEndOf="@+id/Cam1"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Cam1"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <TextView
+        android:id="@+id/tv_cam2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAM 2"
+        android:textColor="#2BC51A"
+        app:layout_constraintBottom_toBottomOf="@+id/Cam2"
+        app:layout_constraintEnd_toEndOf="@+id/Cam2"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toEndOf="@+id/Cam1"
+        app:layout_constraintTop_toTopOf="@+id/Cam2"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <TextView
+        android:id="@+id/tv_cam3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="CAM 3"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        android:textColor="#2BC51A"
+        app:layout_constraintBottom_toBottomOf="@+id/Cam3"
+        app:layout_constraintEnd_toEndOf="@+id/Cam3"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="@+id/Cam3"
+        app:layout_constraintTop_toBottomOf="@+id/Cam1"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <TextView
+        android:id="@+id/tv_cam4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAM 4"
+        android:textColor="#2BC51A"
+        app:layout_constraintBottom_toBottomOf="@+id/Cam4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toEndOf="@+id/Cam3"
+        app:layout_constraintTop_toBottomOf="@+id/Cam2"
+        app:layout_constraintVertical_bias="0.098" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

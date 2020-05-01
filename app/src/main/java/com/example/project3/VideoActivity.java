@@ -3,39 +3,135 @@ package com.example.project3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.MediaController;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 public class VideoActivity extends AppCompatActivity {
 
+    Button btn_cam, btn_cam2, btn_cam3, btn_cam4;
+    /*TextView tv_cam, tv_cam2, tv_cam3, tv_cam4;*/
+    VideoView videoView, testvideo, testvideo2, testvideo3, testvideo4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
-        // 생성한 비디오뷰를 bind
-        VideoView videoView = (VideoView) findViewById(R.id.videoView);
-        // 비디오뷰를 커스텀하기 위해서 미디어컨트롤러 객체 생성
-        // 안드로이드 res폴더에 raw폴더를 생성 후 재생할 동영상파일을 넣습니다.
-        // 경로에 주의할 것
-        // 실제 모바일에서 테스트 할 것
-        // 위 두가지를 대충 넘겼다가 많은 시간을 허비했다. ㅜㅜ...
-        Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo);
-        /*
-외부파일의 경우
-Uri video = Uri.parse("http://해당 url/mp4_file_name.mp4") 와 같이 사용한다.
-*/
 
-        //비디오뷰에 재생할 동영상주소를 연결
+       btn_cam = findViewById(R.id.btn_cam);
+       btn_cam2 = findViewById(R.id.btn_cam2);
+       btn_cam3 = findViewById(R.id.btn_cam3);
+       btn_cam4 = findViewById(R.id.btn_cam4);
+
+      /* tv_cam = findViewById(R.id.tv_cam);
+       tv_cam2 = findViewById(R.id.tv_cam2);
+       tv_cam3 = findViewById(R.id.tv_cam3);
+       tv_cam4 = findViewById(R.id.tv_cam4);
+*/
+       // 비디오 컴포넌트들을 변수에 지정
+       videoView = (VideoView) findViewById(R.id.BigCam);
+       testvideo = (VideoView) findViewById(R.id.Cam1);
+       testvideo2 = (VideoView) findViewById(R.id.Cam2);
+       testvideo3 = (VideoView) findViewById(R.id.Cam3);
+       testvideo4 = (VideoView) findViewById(R.id.Cam4);
+
+       // 들어오면 가장 큰 화면에 첫번째 영상 실행
+        Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo);
+
         videoView.setVideoURI(video);
-        //비디오뷰를 포커스하도록 지정
         videoView.requestFocus();
-        //동영상 재생
         videoView.start();
+
+
+
+       // 아래쪽 4개화면에 각자 영상 실행
+
+        // cam1
+        Uri video2 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo);
+
+        testvideo.setVideoURI(video2);
+        testvideo.requestFocus();
+        testvideo.start();
+
+        // cam2
+        Uri video3 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo2);
+
+        testvideo2.setVideoURI(video3);
+        testvideo2.requestFocus();
+        testvideo2.start();
+
+        Uri video4 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo3);
+
+        testvideo3.setVideoURI(video4);
+        testvideo3.requestFocus();
+        testvideo3.start();
+
+        Uri video5 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo4);
+
+        testvideo4.setVideoURI(video5);
+        testvideo4.requestFocus();
+        testvideo4.start();
+
+
+
+
+
+        btn_cam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VideoView videoView = (VideoView) findViewById(R.id.BigCam);
+
+                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo);
+
+                videoView.setVideoURI(video);
+                videoView.requestFocus();
+                videoView.start();
+            }
+        });
+
+        btn_cam2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VideoView videoView = (VideoView) findViewById(R.id.BigCam);
+
+                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo2);
+
+                videoView.setVideoURI(video);
+                videoView.requestFocus();
+                videoView.start();
+
+            }
+        });
+
+        btn_cam3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VideoView videoView = (VideoView) findViewById(R.id.BigCam);
+
+                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo3);
+
+                videoView.setVideoURI(video);
+                videoView.requestFocus();
+                videoView.start();
+            }
+        });
+
+        btn_cam4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VideoView videoView = (VideoView) findViewById(R.id.BigCam);
+
+                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo4);
+
+                videoView.setVideoURI(video);
+                videoView.requestFocus();
+                videoView.start();
+            }
+        });
+
+
 
 
 
