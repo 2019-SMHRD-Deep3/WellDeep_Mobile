@@ -184,29 +184,31 @@
         android:id="@+id/child_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_shape"
         android:text="Cancel"
         android:textColor="#53435B"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/child_submit"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/child_submit"
+        app:layout_constraintTop_toBottomOf="@+id/img_child"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/child_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_shape"
         android:text="Submit"
         android:textColor="#53435B"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/child_cancel"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/child_cancel" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

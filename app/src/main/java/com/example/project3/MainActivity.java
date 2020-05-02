@@ -1,6 +1,7 @@
 package com.example.project3;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,20 +11,38 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.project3.fragment.FirstFragment;
+import com.example.project3.fragment.SecondFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import me.relex.circleindicator.CircleIndicator;
+
 public class MainActivity extends AppCompatActivity {
-    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video;
+    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video, btn_center, btn_web;
     TextView tv_id;
+    FragmentPagerAdapter adapterViewPager;
+    ViewPager vp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        vp = findViewById(R.id.viewPager);
+        adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
+        vp.setAdapter(adapterViewPager);
+
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(vp);
 
         btn_view = findViewById(R.id.btn_view);
         btn_question = findViewById(R.id.btn_question);
@@ -31,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         btn_child = findViewById(R.id.btn_child);
         btn_childlist = findViewById(R.id.btn_childlist);
         btn_video = findViewById(R.id.btn_video);
+        btn_center = findViewById(R.id.btn_center);
+        btn_web = findViewById(R.id.btn_web);
         tv_id = findViewById(R.id.tv_id);
 
         Intent intent = getIntent();
@@ -40,7 +61,23 @@ public class MainActivity extends AppCompatActivity {
         final String phone = intent.getExtras().getString("phone");
         final String name = intent.getExtras().getString("name");
         final String sex = intent.getExtras().getString("sex");
-        tv_id.setText(id_final);
+        tv_id.setText(name);
+
+        btn_center.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cyber1391.or.kr/"));
+                startActivity(intent);
+            }
+        });
+
+        btn_web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.56.1:8081/WellDeep/index.jsp"));
+                startActivity(intent);
+            }
+        });
 
         btn_video.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -108,9 +145,42 @@ public class MainActivity extends AppCompatActivity {
                         }
                         String token = task.getResult().getToken();
                         Log.d("FCM Log", "FCM 토큰 : " + token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    public static class MyPagerAdapter extends FragmentPagerAdapter {
+        private static int NUM_ITEMS = 2;
+
+        public MyPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return FirstFragment.newInstance(0, "Page # 1");
+                case 1:
+                    return SecondFragment.newInstance(1, "Page # 2");
+                default:
+                    return null;
+            }
+        }
+
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "Page " + position;
+        }
+
     }
 }
 
