@@ -1,6 +1,7 @@
 package com.example.project3;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +27,7 @@ import com.google.firebase.iid.InstanceIdResult;
 import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video;
+    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video, btn_center, btn_web;
     TextView tv_id;
     FragmentPagerAdapter adapterViewPager;
     ViewPager vp;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         btn_child = findViewById(R.id.btn_child);
         btn_childlist = findViewById(R.id.btn_childlist);
         btn_video = findViewById(R.id.btn_video);
+        btn_center = findViewById(R.id.btn_center);
+        btn_web = findViewById(R.id.btn_web);
         tv_id = findViewById(R.id.tv_id);
 
         Intent intent = getIntent();
@@ -59,6 +62,22 @@ public class MainActivity extends AppCompatActivity {
         final String name = intent.getExtras().getString("name");
         final String sex = intent.getExtras().getString("sex");
         tv_id.setText(name);
+
+        btn_center.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cyber1391.or.kr/"));
+                startActivity(intent);
+            }
+        });
+
+        btn_web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.56.1:8081/WellDeep/index.jsp"));
+                startActivity(intent);
+            }
+        });
 
         btn_video.setOnClickListener((new View.OnClickListener() {
             @Override
