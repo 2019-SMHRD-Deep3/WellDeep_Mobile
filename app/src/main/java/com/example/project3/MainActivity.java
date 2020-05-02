@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         final String phone = intent.getExtras().getString("phone");
         final String name = intent.getExtras().getString("name");
         final String sex = intent.getExtras().getString("sex");
-        tv_id.setText(id_final);
+        tv_id.setText(name);
 
         btn_video.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         String token = task.getResult().getToken();
                         Log.d("FCM Log", "FCM 토큰 : " + token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG).show();
                     }
                 });
     }
