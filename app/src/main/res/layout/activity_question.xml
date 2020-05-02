@@ -4,28 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBEDE1"
+    android:background="#FFFDFB"
     tools:context=".QuestionActivity">
 
 
-    <TextView
-        android:id="@+id/tv_question"
+    <ImageView
+        android:id="@+id/imageView6"
         android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginTop="40dp"
-        android:text="1:1 문의하기"
-        android:textColor="#0B0A0A"
-        android:textSize="24sp"
+        android:layout_height="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/finnal" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="119dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="84dp"
+        android:text="문의하기"
+        android:textColor="#FFFCFC"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.38" />
 
     <EditText
         android:id="@+id/et_title"
         android:layout_width="309dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/et_default_drawable"
         android:ems="10"
         android:hint="    제목을 입력하세요."
@@ -35,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_question" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <EditText
         android:id="@+id/et_question"
@@ -60,11 +71,11 @@
         android:id="@+id/btn_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
+        android:layout_marginStart="112dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="70dp"
-        android:background="#FBD157"
-        android:text="문의"
+        android:background="@drawable/btn_shape"
+        android:text="문의하기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_question"
@@ -74,10 +85,10 @@
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FBD157"
-        android:text="@android:string/cancel"
+        android:background="@drawable/btn_shape"
+        android:text="취소하기"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toEndOf="@+id/btn_submit"
         app:layout_constraintTop_toTopOf="@+id/btn_submit" />
 

@@ -60,7 +60,7 @@ public class ChildListActivity extends AppCompatActivity {
 
             for (int i = 0; i < jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
                 jsonObject = jsonArray.getJSONObject(i);
-                items.add(new ChildDTO(jsonObject.getString("c_name"),jsonObject.getString("c_age"),jsonObject.getString("c_sex"),jsonObject.getString("c_photo"),jsonObject.getString("c_number")));
+                items.add(new ChildDTO(jsonObject.getString("c_name"),jsonObject.getString("c_age")+"세",jsonObject.getString("c_sex"),jsonObject.getString("c_photo"),jsonObject.getString("c_number")));
 
             }
         } catch (Exception e) {
