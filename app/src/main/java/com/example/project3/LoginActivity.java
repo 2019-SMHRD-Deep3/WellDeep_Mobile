@@ -39,8 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         user_id = findViewById(R.id.user_id);
         user_pw = findViewById(R.id.user_pw);
 
-
-        출처: https://devuryu.tistory.com/284 [대부류 - [Dev u Ryu]]
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

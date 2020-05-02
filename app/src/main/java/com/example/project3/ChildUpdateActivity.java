@@ -38,12 +38,7 @@ public class ChildUpdateActivity extends AppCompatActivity {
     String img_url;
     ImageView iv_c_photo;
 
-
-
-
-
-
-    @Override
+@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_update);
@@ -54,10 +49,6 @@ public class ChildUpdateActivity extends AppCompatActivity {
         et_c_age = findViewById(R.id.et_c_age);
         et_c_sex = findViewById(R.id.et_c_sex);
         iv_c_photo = findViewById(R.id.iv_c_photo);
-
-
-
-
 
         Intent intent = getIntent();
 

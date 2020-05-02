@@ -59,6 +59,10 @@ public class ChildActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
+        final String name = intent.getExtras().getString("name");
+
+        et_id.setText(id_final);
+        et_id.setEnabled(false);
 
         btn_take.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +78,7 @@ public class ChildActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ChildActivity.this,MainActivity.class);
                 intent.putExtra("loginid",id_final);
+                intent.putExtra("name",name);
                 startActivity(intent);
             }
         });
@@ -99,6 +104,7 @@ public class ChildActivity extends AppCompatActivity {
                         Toast.makeText(ChildActivity.this, "아이등록성공", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ChildActivity.this, MainActivity.class);
                         intent.putExtra("loginid",id_final);
+                        intent.putExtra("name",name);
                         startActivity(intent);
                         finish();}
 
