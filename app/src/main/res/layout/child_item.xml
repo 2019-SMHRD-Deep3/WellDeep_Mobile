@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
+
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
@@ -40,6 +42,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="세"
+        android:visibility="invisible"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_age"
