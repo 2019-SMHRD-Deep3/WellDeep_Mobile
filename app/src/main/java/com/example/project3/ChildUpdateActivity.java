@@ -33,7 +33,7 @@ import java.util.concurrent.ExecutionException;
 public class ChildUpdateActivity extends AppCompatActivity {
 
     EditText et_c_name, et_c_age, et_c_sex;
-    Button btn_submit;
+
     TextView tv_test;
     String img_url;
     ImageView iv_c_photo;
@@ -43,7 +43,7 @@ public class ChildUpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_update);
 
-        btn_submit = findViewById(R.id.btn_submit);
+
 
         et_c_name = findViewById(R.id.et_c_name);
         et_c_age = findViewById(R.id.et_c_age);
@@ -72,8 +72,19 @@ public class ChildUpdateActivity extends AppCompatActivity {
 
 
         et_c_name.setText(name);
+        et_c_name.setFocusable(false);
+        et_c_name.setClickable(false);
+
+
+
+
         et_c_age.setText(age);
+        et_c_age.setFocusable(false);
+        et_c_age.setClickable(false);
         et_c_sex.setText(sex);
+        et_c_sex.setFocusable(false);
+        et_c_sex.setClickable(false);
+
 
 
 
@@ -86,13 +97,6 @@ public class ChildUpdateActivity extends AppCompatActivity {
 
 
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ChildUpdateActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
 
