@@ -10,20 +10,38 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.project3.fragment.FirstFragment;
+import com.example.project3.fragment.SecondFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
     Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video;
     TextView tv_id;
+    FragmentPagerAdapter adapterViewPager;
+    ViewPager vp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        vp = findViewById(R.id.viewPager);
+        adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
+        vp.setAdapter(adapterViewPager);
+
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(vp);
 
         btn_view = findViewById(R.id.btn_view);
         btn_question = findViewById(R.id.btn_question);
@@ -110,6 +128,40 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("FCM Log", "FCM 토큰 : " + token);
                     }
                 });
+    }
+
+    public static class MyPagerAdapter extends FragmentPagerAdapter {
+        private static int NUM_ITEMS = 2;
+
+        public MyPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return FirstFragment.newInstance(0, "Page # 1");
+                case 1:
+                    return SecondFragment.newInstance(1, "Page # 2");
+                default:
+                    return null;
+            }
+        }
+
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "Page " + position;
+        }
+
     }
 }
 
