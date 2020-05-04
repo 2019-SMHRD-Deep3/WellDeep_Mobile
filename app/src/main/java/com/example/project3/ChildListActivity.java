@@ -33,10 +33,7 @@ public class ChildListActivity extends AppCompatActivity {
     ChildAdapter adapter;
     ArrayList<ChildMoveDTO> dto;
     ListView lv;
-    String name;
-    String age;
-    String sex;
-    String photo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +41,9 @@ public class ChildListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
 
-
         items = new ArrayList<>();
         dto = new ArrayList<>();
         lv = findViewById(R.id.lvPage);
-
 
         try {
             String result = new CustomTask().execute(id_final).get();

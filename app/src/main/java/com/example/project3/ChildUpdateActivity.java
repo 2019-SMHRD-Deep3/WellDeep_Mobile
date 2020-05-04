@@ -33,8 +33,6 @@ import java.util.concurrent.ExecutionException;
 public class ChildUpdateActivity extends AppCompatActivity {
 
     EditText et_c_name, et_c_age, et_c_sex;
-
-    TextView tv_test;
     String img_url;
     ImageView iv_c_photo;
 
@@ -42,8 +40,6 @@ public class ChildUpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_update);
-
-
 
         et_c_name = findViewById(R.id.et_c_name);
         et_c_age = findViewById(R.id.et_c_age);
@@ -55,7 +51,6 @@ public class ChildUpdateActivity extends AppCompatActivity {
         final String name = intent.getExtras().getString("c_name");
         final String age = intent.getExtras().getString("c_age");
         final String sex = intent.getExtras().getString("c_sex");
-
 
         try {
             String result = new CustomTask().execute(name).get();
@@ -70,14 +65,9 @@ public class ChildUpdateActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         et_c_name.setText(name);
         et_c_name.setFocusable(false);
         et_c_name.setClickable(false);
-
-
-
-
         et_c_age.setText(age);
         et_c_age.setFocusable(false);
         et_c_age.setClickable(false);
@@ -85,24 +75,11 @@ public class ChildUpdateActivity extends AppCompatActivity {
         et_c_sex.setFocusable(false);
         et_c_sex.setClickable(false);
 
-
-
-
         Log.d("nameAda",name);
         Log.d("ageAda",age);
         Log.d("sexAda", sex);
 
-
-
-
-
-
-
-
-
-
     }
-
 
     class CustomTask extends AsyncTask<String, Void, String> {
         String sendMsg, receiveMsg;

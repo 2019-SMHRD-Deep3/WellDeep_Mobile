@@ -27,7 +27,7 @@ import com.google.firebase.iid.InstanceIdResult;
 import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video, btn_center, btn_web;
+    Button btn_question, btn_modify, btn_view, btn_child, btn_childlist, btn_video, btn_center, btn_web, btn_map;
     TextView tv_id;
     FragmentPagerAdapter adapterViewPager;
     ViewPager vp;
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         btn_video = findViewById(R.id.btn_video);
         btn_center = findViewById(R.id.btn_center);
         btn_web = findViewById(R.id.btn_web);
+        btn_map = findViewById(R.id.btn_map);
         tv_id = findViewById(R.id.tv_id);
 
         Intent intent = getIntent();
@@ -75,6 +76,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.56.1:8081/WellDeep/index.jsp"));
+                startActivity(intent);
+            }
+        });
+
+        btn_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(intent);
             }
         });

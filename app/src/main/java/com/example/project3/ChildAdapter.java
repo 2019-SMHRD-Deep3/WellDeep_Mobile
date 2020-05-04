@@ -74,8 +74,6 @@ public class ChildAdapter extends BaseAdapter {
         final TextView tv_sex = convertView.findViewById(R.id.tv_sex);
         final  TextView tv_number = convertView.findViewById(R.id.tv_num);
 
-
-
         tv_name.setText(items.get(position).getC_name());
         tv_age.setText(items.get(position).getC_age());
         tv_sex.setText(items.get(position).getC_sex());

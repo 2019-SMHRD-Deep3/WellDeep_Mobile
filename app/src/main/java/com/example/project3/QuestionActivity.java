@@ -7,8 +7,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -21,8 +24,9 @@ import java.net.URL;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    EditText et_question, et_title;
+    EditText et_question;
     Button btn_cancel, btn_submit;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +34,31 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
 
         et_question = findViewById(R.id.et_question);
-        et_title = findViewById(R.id.et_title);
+        spinner = findViewById(R.id.spinner);
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_submit = findViewById(R.id.btn_submit);
+
+        spinner = findViewById(R.id.spinner);
 
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
         final String name = intent.getExtras().getString("name");
 
+        ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(this, R.array.spinnerArray, android.R.layout.simple_spinner_dropdown_item);
+        //R.array.test는 저희가 정의해놓은 1월~12월 / android.R.layout.simple_spinner_dropdown_item은 기본으로 제공해주는 형식입니다.
+        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(monthAdapter); //어댑터에 연결해줍
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +74,7 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
 
             String context = et_question.getText().toString();
-            String title = et_title.getText().toString();
+            String title = spinner.getSelectedItem().toString();
 
                 try {
                 String result = new CustomTask().execute(context,id_final,title, "question").get();
