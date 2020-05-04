@@ -35,7 +35,6 @@ public class ChildUpdateActivity extends AppCompatActivity {
     EditText et_c_name, et_c_age, et_c_sex;
     String img_url;
     ImageView iv_c_photo;
-    Button btn_main;
 
 @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,26 +45,12 @@ public class ChildUpdateActivity extends AppCompatActivity {
         et_c_age = findViewById(R.id.et_c_age);
         et_c_sex = findViewById(R.id.et_c_sex);
         iv_c_photo = findViewById(R.id.iv_c_photo);
-        btn_main = findViewById(R.id.btn_main);
 
         Intent intent = getIntent();
 
         final String name = intent.getExtras().getString("c_name");
         final String age = intent.getExtras().getString("c_age");
         final String sex = intent.getExtras().getString("c_sex");
-
-    final String id_final = intent.getExtras().getString("loginid");
-    final String name_final = intent.getExtras().getString("name");
-
-    btn_main.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(ChildUpdateActivity.this, MainActivity.class);
-            intent.putExtra("loginid",id_final);
-            intent.putExtra("name",name_final);
-            startActivity(intent);
-        }
-    });
 
         try {
             String result = new CustomTask().execute(name).get();

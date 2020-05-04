@@ -40,7 +40,6 @@ public class ChildListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_child_list);
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
-        final String name = intent.getExtras().getString("name");
 
         items = new ArrayList<>();
         dto = new ArrayList<>();
@@ -65,20 +64,6 @@ public class ChildListActivity extends AppCompatActivity {
 
         adapter = new ChildAdapter(this, R.layout.child_item, items);
         lv.setAdapter(adapter);
-
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(
-                        getApplicationContext(),
-                        ChildUpdateActivity.class);
-                intent.putExtra("loginid",id_final);
-                intent.putExtra("name",name);
-                Log.d("5월 4일",name);
-                startActivity(intent);
-
-            }
-        });
 
     }
 
