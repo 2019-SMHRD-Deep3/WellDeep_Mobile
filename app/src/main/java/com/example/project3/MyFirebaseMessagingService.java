@@ -1,5 +1,6 @@
 package com.example.project3;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -35,6 +36,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String channelId = "Channel ID";
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId)
+                    .setPriority(NotificationCompat.PRIORITY_MAX)
+                    .setFullScreenIntent(pendingIntent, true)
+                    .setDefaults(Notification.DEFAULT_SOUND|Notification.DEFAULT_VIBRATE)
                     .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo_white))
                     .setSmallIcon(R.drawable.test)
                     .setContentTitle(messageTitle)
