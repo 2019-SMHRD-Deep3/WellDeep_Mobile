@@ -23,7 +23,7 @@ import java.net.URL;
 
 public class JoinUpdateActivity extends AppCompatActivity {
 
-    Button btn_cancel,btn_submit;
+    Button btn_cancel,btn_submit,btn_main;
     EditText et_name, et_id, et_pw, et_addr, et_tel;
     RadioGroup rg;
     RadioButton radio_man, radio_women;
@@ -40,6 +40,7 @@ public class JoinUpdateActivity extends AppCompatActivity {
         final String phone = intent.getExtras().getString("phone");
         final String name = intent.getExtras().getString("name");
         final String sex = intent.getExtras().getString("sex");
+
 
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_submit = findViewById(R.id.btn_submit);
@@ -59,6 +60,7 @@ public class JoinUpdateActivity extends AppCompatActivity {
         et_name.setText(name);
         radio_man = findViewById(R.id.radio_man);
         radio_women = findViewById(R.id.radio_women);
+        btn_main = findViewById(R.id.btn_main);
 
         if(sex.contains("남")) {
             radio_man.setChecked(true);
@@ -78,6 +80,16 @@ public class JoinUpdateActivity extends AppCompatActivity {
                 intent.putExtra("phone",phone);
                 intent.putExtra("name",name);
                 intent.putExtra("sex",sex);
+                startActivity(intent);
+            }
+        });
+
+        btn_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JoinUpdateActivity.this, MainActivity.class);
+                intent.putExtra("loginid",id_final);
+                intent.putExtra("name",name);
                 startActivity(intent);
             }
         });
