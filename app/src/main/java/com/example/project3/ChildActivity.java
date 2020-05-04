@@ -87,14 +87,14 @@ public class ChildActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String name = etchild_name.getText().toString();
+                String name_child = etchild_name.getText().toString();
                 String sex = rd.getText().toString();
                 String age = etchild_age.getText().toString();
                 String img = img_child.getDrawable().toString();
                 String id = et_id.getText().toString();
 
                 try {
-                    String result = new CustomTask().execute(name,sex,age,img,id,"child_join").get();
+                    String result = new CustomTask().execute(name_child,sex,age,img,id,"child_join").get();
 
                     if (result.contains("0")) {
                         Toast.makeText(ChildActivity.this, "아이등록실패", Toast.LENGTH_SHORT).show();

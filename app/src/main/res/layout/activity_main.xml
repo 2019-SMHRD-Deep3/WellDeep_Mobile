@@ -58,7 +58,7 @@
         android:id="@+id/tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="244dp"
+        android:layout_marginStart="240dp"
         android:text="TextView"
         android:textColor="#F8F3F8"
         android:textSize="18sp"

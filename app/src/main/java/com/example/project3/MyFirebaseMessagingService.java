@@ -37,7 +37,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId)
                     .setPriority(NotificationCompat.PRIORITY_MAX)
-                    .setFullScreenIntent(pendingIntent, true)
                     .setDefaults(Notification.DEFAULT_SOUND|Notification.DEFAULT_VIBRATE)
                     .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo_white))
                     .setSmallIcon(R.drawable.test)
