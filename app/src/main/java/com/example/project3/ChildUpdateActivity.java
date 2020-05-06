@@ -56,7 +56,7 @@ public class ChildUpdateActivity extends AppCompatActivity {
             Log.d("웹서버에서받은 파일 이름",result);
 
 
-                img_url = "http://192.168.56.1:8081/WellDeep/img/" + result; // 이미지파일 가져오기
+                img_url = "http://192.168.56.1:8081/WellDeep/child/" + result; // 이미지파일 가져오기
 
 
             Glide.with(this).load(img_url).into(iv_c_photo);

@@ -114,7 +114,7 @@ public class DetailActivity extends AppCompatActivity {
 
             for(int i=0; i<jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
                 jsonObject = jsonArray.getJSONObject(i);
-                img_url = "http://192.168.56.1:8081/WellDeep/img/" + jsonObject.getString("i_file"); // 이미지파일 가져오기
+                img_url = "http://192.168.56.1:8081/WellDeep/alarm/" + jsonObject.getString("i_file"); // 이미지파일 가져오기
                 voice_url = "http://192.168.56.1:8081/WellDeep/voice/" + jsonObject.getString("v_file"); // 음성파일 가져오기
             }
             // Glide로 이미지 표시하기
