@@ -56,19 +56,19 @@ public class VideoActivity extends AppCompatActivity {
         testvideo.start();
 
         // cam2
-        Uri video3 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo2);
+        Uri video3 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.video2);
 
         testvideo2.setVideoURI(video3);
         testvideo2.requestFocus();
         testvideo2.start();
 
-        Uri video4 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo3);
+        Uri video4 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.video3);
 
         testvideo3.setVideoURI(video4);
         testvideo3.requestFocus();
         testvideo3.start();
 
-        Uri video5 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo4);
+        Uri video5 = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.video4);
 
         testvideo4.setVideoURI(video5);
         testvideo4.requestFocus();
@@ -96,7 +96,7 @@ public class VideoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 VideoView videoView = (VideoView) findViewById(R.id.BigCam);
 
-                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo2);
+                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.video2);
 
                 videoView.setVideoURI(video);
                 videoView.requestFocus();
@@ -110,7 +110,7 @@ public class VideoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 VideoView videoView = (VideoView) findViewById(R.id.BigCam);
 
-                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo3);
+                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.video3);
 
                 videoView.setVideoURI(video);
                 videoView.requestFocus();
@@ -123,7 +123,7 @@ public class VideoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 VideoView videoView = (VideoView) findViewById(R.id.BigCam);
 
-                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.testvideo4);
+                Uri video = Uri.parse("android.resource://" + getPackageName()+ "/"+R.raw.video4);
 
                 videoView.setVideoURI(video);
                 videoView.requestFocus();
