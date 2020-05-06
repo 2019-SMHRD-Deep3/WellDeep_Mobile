@@ -47,7 +47,6 @@ public class ChildListActivity extends AppCompatActivity {
 
         try {
             String result = new CustomTask().execute(id_final).get();
-            Log.d("받아온 값Adapter", result);
 
             JSONObject jsonObject = new JSONObject(result); //result를 인자로 넣어 jsonObject를 생성한다.
 

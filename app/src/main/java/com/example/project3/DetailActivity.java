@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView iv_img;
-    Button btn_play, btn_stop, btn_call;
+    Button btn_play, btn_stop, btn_call,btn_main;
     MediaPlayer player;
     String img_url;
     String voice_url;
@@ -43,13 +43,23 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+
+        Intent intent = getIntent();
+
+        final String pw = intent.getExtras().getString("pw");
+        final String addr = intent.getExtras().getString("addr");
+        final String phone = intent.getExtras().getString("phone");
+        final String name = intent.getExtras().getString("name");
+        final String sex = intent.getExtras().getString("sex");
+
         iv_img = findViewById(R.id.iv_img);
 
         btn_play = findViewById(R.id.btn_play);
         btn_stop = findViewById(R.id.btn_stop);
         btn_call = findViewById(R.id.btn_call);
+        btn_main = findViewById(R.id.btn_main);
 
-        Intent intent = getIntent();
 
         String num = intent.getExtras().getString("num"); // 클릭한 알람 번호 가져오기
         final String id_final = intent.getExtras().getString("loginid");
@@ -75,6 +85,22 @@ public class DetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+     btn_main.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+             intent.putExtra("loginid",id_final);
+             intent.putExtra("pw",pw);
+             intent.putExtra("addr",addr);
+             intent.putExtra("phone",phone);
+             intent.putExtra("name",name);
+             intent.putExtra("sex",sex);
+             startActivity(intent);
+         }
+     });
+
 
         final String alarm_num = num;
 

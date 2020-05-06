@@ -47,7 +47,6 @@ public class ChildUpdateActivity extends AppCompatActivity {
         iv_c_photo = findViewById(R.id.iv_c_photo);
 
         Intent intent = getIntent();
-
         final String name = intent.getExtras().getString("c_name");
         final String age = intent.getExtras().getString("c_age");
         final String sex = intent.getExtras().getString("c_sex");
