@@ -38,6 +38,11 @@ public class AlarmActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String id_final = intent.getExtras().getString("loginid");
+        final String pw = intent.getExtras().getString("pw");
+        final String addr = intent.getExtras().getString("addr");
+        final String phone = intent.getExtras().getString("phone");
+        final String name = intent.getExtras().getString("name");
+        final String sex = intent.getExtras().getString("sex");
 
         items = new ArrayList<>();
         dto = new ArrayList<>();
@@ -80,6 +85,11 @@ public class AlarmActivity extends AppCompatActivity {
                 String alarm_num = num.substring(num.lastIndexOf(" ")); // 알람 번호
                 intent.putExtra("num", alarm_num); // 알람 번호 DetailActivity로 넘기기
                 intent.putExtra("loginid",id_final);
+                intent.putExtra("pw",pw);
+                intent.putExtra("addr",addr);
+                intent.putExtra("phone",phone);
+                intent.putExtra("name",name);
+                intent.putExtra("sex",sex);
                 startActivity(intent);
             }
         });

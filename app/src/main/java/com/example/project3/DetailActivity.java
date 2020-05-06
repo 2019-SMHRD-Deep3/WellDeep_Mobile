@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView iv_img;
-    Button btn_play, btn_stop, btn_call;
+    Button btn_play, btn_stop, btn_call,btn_main;
     MediaPlayer player;
     String img_url;
     String voice_url;
@@ -43,13 +43,23 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+
+        Intent intent = getIntent();
+
+        final String pw = intent.getExtras().getString("pw");
+        final String addr = intent.getExtras().getString("addr");
+        final String phone = intent.getExtras().getString("phone");
+        final String name = intent.getExtras().getString("name");
+        final String sex = intent.getExtras().getString("sex");
+
         iv_img = findViewById(R.id.iv_img);
 
         btn_play = findViewById(R.id.btn_play);
         btn_stop = findViewById(R.id.btn_stop);
         btn_call = findViewById(R.id.btn_call);
+        btn_main = findViewById(R.id.btn_main);
 
-        Intent intent = getIntent();
 
         String num = intent.getExtras().getString("num"); // 클릭한 알람 번호 가져오기
         final String id_final = intent.getExtras().getString("loginid");
@@ -76,6 +86,22 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+
+     btn_main.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+             intent.putExtra("loginid",id_final);
+             intent.putExtra("pw",pw);
+             intent.putExtra("addr",addr);
+             intent.putExtra("phone",phone);
+             intent.putExtra("name",name);
+             intent.putExtra("sex",sex);
+             startActivity(intent);
+         }
+     });
+
+
         final String alarm_num = num;
 
         try {
@@ -88,7 +114,7 @@ public class DetailActivity extends AppCompatActivity {
 
             for(int i=0; i<jsonArray.length(); i++) { //jsonObject에 담긴 두 개의 jsonObject를 jsonArray를 통해 하나씩 호출한다.
                 jsonObject = jsonArray.getJSONObject(i);
-                img_url = "http://192.168.56.1:8081/WellDeep/img/" + jsonObject.getString("i_file"); // 이미지파일 가져오기
+                img_url = "http://192.168.56.1:8081/WellDeep/alarm/" + jsonObject.getString("i_file"); // 이미지파일 가져오기
                 voice_url = "http://192.168.56.1:8081/WellDeep/voice/" + jsonObject.getString("v_file"); // 음성파일 가져오기
             }
             // Glide로 이미지 표시하기

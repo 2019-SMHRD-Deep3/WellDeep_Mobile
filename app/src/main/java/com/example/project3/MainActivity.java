@@ -101,7 +101,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
                 intent.putExtra("loginid",id_final);
+                intent.putExtra("pw",pw);
+                intent.putExtra("addr",addr);
+                intent.putExtra("phone",phone);
                 intent.putExtra("name",name);
+                intent.putExtra("sex",sex);
                 startActivity(intent);
             }
         });
@@ -143,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ChildListActivity.class);
                 intent.putExtra("loginid",id_final);
-                intent.putExtra("name",name);
                 startActivity(intent);
             }
         });
